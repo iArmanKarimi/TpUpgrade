@@ -1,2 +1,3 @@
-# TpUpgrade
-Removes advertisements of chatroom websites made by Tarh-Pardaaz
+# Tp Upgrade
+
+افزونه ی ارتقای چت روم های ایرانی که می تواند تبلیغات را از حذف کند
