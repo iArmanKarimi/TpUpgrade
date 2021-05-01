@@ -2,11 +2,14 @@
   "name": "improved-tp",
   "version": "1.0.0",
   "description": "Removes advertisements of chatroom websites made by Tarh-Pardaaz",
-  "scripts": {},
+  "scripts": {
+    "build": "node_modules/.bin/tsc"
+  },
   "keywords": [],
   "author": "Arman Karimi",
   "license": "MIT",
   "devDependencies": {
+    "typescript": "^4.2.4",
     "web-ext-types": "^3.2.1"
   },
   "dependencies": {}
