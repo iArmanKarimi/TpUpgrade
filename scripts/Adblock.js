@@ -1,10 +1,5 @@
-function blockPopup() {
-    document.onclick = undefined
-    document.removeEventListener('click')
-}
-
 function blockAds() {
-    blockPopup()
+    document.onclick = undefined
     var divs = document.getElementsByTagName('div')
     for (var i = 0; i < divs.length; i++) {
         var div = divs[i]
@@ -14,6 +9,6 @@ function blockAds() {
     }
 }
 
-blockPopup()
+blockAds()
 window.addEventListener('load', blockAds)
 undefined
