@@ -1,0 +1,3 @@
+interface IMsg {
+    addUrl?: boolean,
+}

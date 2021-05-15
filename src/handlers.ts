@@ -14,10 +14,7 @@ const initBrowserHandlers = () => {
         timeStamp: number;
     }): Promise<void> => {
         if (await url_storage.exists(arg.url)) {
-            console.debug(`url ${arg.url} exists. blocking ads.`)
             await loadScripts(arg.tabId)
-        } else {
-            console.debug(`url ${arg.url} doesn't exists.`)
         }
     }
     //#endregion
@@ -25,7 +22,7 @@ const initBrowserHandlers = () => {
     browser.webNavigation.onDOMContentLoaded.addListener(onDOMContentLoaded)
 }
 
-browser.runtime.onMessage.addListener(async (add: boolean | object) => {
+browser.runtime.onMessage.addListener(async (msg: IMsg) => {
     browser.tabs.query({ active: true })
         .then(tabs => {
             tabs.forEach(tab => {
@@ -33,11 +30,12 @@ browser.runtime.onMessage.addListener(async (add: boolean | object) => {
                     if (!tab.url.startsWith('http')) {
                         return
                     }
-                    if (add === true) {
-                        url_storage.add(tab.url)
-                    }
-                    if (add === false) {
-                        url_storage.remove(tab.url)
+                    if (msg.addUrl) {
+                        if (msg.addUrl === true) {
+                            url_storage.add(tab.url)
+                        } else {
+                            url_storage.remove(tab.url)
+                        }
                     }
                 }
             })

@@ -49,8 +49,6 @@ const url_storage = {
         const urls: Array<string> = Array.from(await storage.get(storage.KEYS.URLS) as any)
         return urls.some(_url => {
             try {
-                console.debug(1, _url)
-                console.debug(2, url)
                 return getHostName(url) == getHostName(_url)
             } catch {
                 return false
